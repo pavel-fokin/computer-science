@@ -31,6 +31,12 @@ def test_insert_after():
     assert [item for item in ll1] == [1, 3, 2]
 
 
+def test_reverse():
+    ll = LinkedList.from_iter([1, 2, 3, 4, 5])
+    ll.reverse()
+    assert [item for item in ll] == [5, 4, 3, 2, 1]
+
+
 if __name__ == '__main__':
     test_init_list()
     test_init_from_iterable()

@@ -46,5 +46,16 @@ class LinkedList:
         new_node = LinkedList.Node(new_data, node.next)
         node.next = new_node
 
+    def reverse(self):
+        curr = self.head
+        prev, next = None
+        while curr is not None:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+
+        self.head = prev
+
     def is_empty(self):
         return self.head is None or self.head.is_empty()
