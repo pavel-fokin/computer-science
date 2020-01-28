@@ -21,14 +21,14 @@ class Graph:
         if self.type_ == Graph.UNDIRECTED:
             self._graph[dst].add(src)
 
-    def get_adjacents(self, vertex):
+    def get_adjacent(self, vertex):
         return self._graph[vertex]
 
     def is_empty(self):
         return len(self._graph) == 0
 
 
-class BFS:
+class BFS1:
     def __init__(self, graph, start_vertex):
         self.graph = graph
         self.start_vertex = start_vertex
@@ -43,9 +43,26 @@ class BFS:
             if vertex not in visited:
                 yield vertex
                 visited.add(vertex)
-                visit_queue.extend(sorted(
-                    self.graph.get_adjacents(vertex)
-                ))
+                visit_queue.extend(self.graph.get_adjacent(vertex))
+
+
+class BFS2:
+    def __init__(self, graph, start_vertex):
+        self.graph = graph
+        self.start_vertex = start_vertex
+
+    def __iter__(self):
+        visit_queue = deque()  # Queue
+        visit_queue.append(self.start_vertex)
+        visited = {self.start_vertex}
+
+        while visit_queue:
+            vertex = visit_queue.popleft()
+            yield vertex
+            for vertex in self.graph.get_adjacent(vertex):
+                if vertex not in visited:
+                    visited.add(vertex)
+                    visit_queue.append(vertex)
 
 
 class DFS:
@@ -64,7 +81,7 @@ class DFS:
                 yield vertex
                 visited.add(vertex)
                 visit_stack.extend(sorted(
-                    self.graph.get_adjacents(vertex), reverse=True
+                    self.graph.get_adjacent(vertex), reverse=True
                 ))
 
 

@@ -61,4 +61,3 @@ if __name__ == '__main__':
     test_inorder_traverse()
     test_postorder_traverse()
     print("Test BinaryTree :: OK")
-
