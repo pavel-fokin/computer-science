@@ -80,8 +80,4 @@ class DFS:
             if vertex not in visited:
                 yield vertex
                 visited.add(vertex)
-                visit_stack.extend(sorted(
-                    self.graph.get_adjacent(vertex), reverse=True
-                ))
-
-
+                visit_stack.extend(self.graph.get_adjacent(vertex))
