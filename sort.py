@@ -49,7 +49,7 @@ def merge(array: list, reverse=False) -> list:
 
     def merge_sorted(left, right, cmp):
         merged = []
-        l, r = len(left), len(right)
+        l, r = len(left), len(right)  # pylint:disable=invalid-name
         i = j = 0
 
         while i < l and j < r:
@@ -69,16 +69,17 @@ def merge(array: list, reverse=False) -> list:
 
         return merged + tail
 
-    def sort_(array, reverse):
-        cmp = operator.lt if reverse else operator.gt
+    def sort_(array, reverse, cmp):
+        n = len(array)  # pylint:disable=invalid-name
 
-        if len(array) < 2:
+        if n < 2:
             return array
 
-        middle = len(array) // 2
-        left = sort_(array[:middle], reverse)
-        right = sort_(array[middle:], reverse)
+        middle = n // 2
+        left = sort_(array[:middle], reverse, cmp)
+        right = sort_(array[middle:], reverse, cmp)
 
         return merge_sorted(left, right, cmp)
 
-    return sort_(array, reverse)
+    cmp = operator.lt if reverse else operator.gt
+    return sort_(array, reverse, cmp)

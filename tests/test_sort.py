@@ -14,6 +14,10 @@ def test_sort_reverse(method):
     assert res == [5, 4, 3, 2, 1], res
 
 
+def test_sort_equal(method):
+    assert method([1, 1, 1, 1]) == [1, 1, 1, 1]
+
+
 def test_sort_one(method):
     assert method([1]) == [1]
 
