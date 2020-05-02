@@ -43,3 +43,42 @@ def selection(array: list, reverse=False) -> list:
         array.pop(i + index + 1)
 
     return array
+
+
+def merge(array: list, reverse=False) -> list:
+
+    def merge_sorted(left, right, cmp):
+        merged = []
+        l, r = len(left), len(right)
+        i = j = 0
+
+        while i < l and j < r:
+            if cmp(left[i], right[j]):
+                merged.append(right[j])
+                j += 1
+            else:
+                merged.append(left[i])
+                i += 1
+
+        if i < l:
+            tail = left[i:]
+        elif j < r:
+            tail = right[j:]
+        else:
+            tail = []
+
+        return merged + tail
+
+    def sort_(array, reverse):
+        cmp = operator.lt if reverse else operator.gt
+
+        if len(array) < 2:
+            return array
+
+        middle = len(array) // 2
+        left = sort_(array[:middle], reverse)
+        right = sort_(array[middle:], reverse)
+
+        return merge_sorted(left, right, cmp)
+
+    return sort_(array, reverse)
