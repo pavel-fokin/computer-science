@@ -69,20 +69,20 @@ def merge(array: list, reverse=False) -> list:
 
         return merged + tail
 
-    def sort_(array, reverse, cmp):
+    def sort_(array, cmp):
         n = len(array)  # pylint:disable=invalid-name
 
         if n < 2:
             return array
 
         middle = n // 2
-        left = sort_(array[:middle], reverse, cmp)
-        right = sort_(array[middle:], reverse, cmp)
+        left = sort_(array[:middle], cmp)
+        right = sort_(array[middle:], cmp)
 
         return merge_sorted(left, right, cmp)
 
     cmp = operator.lt if reverse else operator.gt
-    return sort_(array, reverse, cmp)
+    return sort_(array, cmp)
 
 
 def quick(array: list, reverse=False) -> list:
