@@ -1,4 +1,4 @@
-from sort import bubble, insertion
+from sort import bubble, insertion, selection
 
 
 def test_sort_success(method):
@@ -22,7 +22,7 @@ def test_sort_empty(method):
     assert method([]) == []
 
 
-for method in (bubble, insertion):
+for method in (bubble, insertion, selection):
     test_sort_success(method)
     test_sort_reverse(method)
     test_sort_empty(method)
