@@ -1,4 +1,4 @@
-from sort import bubble, insertion, merge, quick, selection
+from cs.sort import bubble, insertion, merge, quick, selection
 
 
 def test_sort_success(method):
