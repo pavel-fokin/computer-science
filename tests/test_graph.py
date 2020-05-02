@@ -1,4 +1,4 @@
-from graph import Graph, BFS1, BFS2, DFS
+from cs.graph import Graph, BFS1, BFS2, DFS
 
 
 def test_init_graph():
@@ -48,12 +48,3 @@ def test_dfs():
     graph.add_edge(3, 3)
 
     assert [v for v in DFS(graph, 2)] == [2, 3, 0, 1]
-
-
-if __name__ == '__main__':
-    test_init_graph()
-    test_add_edge()
-    test_bfs1()
-    test_bfs2()
-    test_dfs()
-    print("Test Graph :: OK")

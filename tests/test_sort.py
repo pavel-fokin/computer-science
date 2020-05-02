@@ -1,4 +1,11 @@
+import pytest
+
 from cs.sort import bubble, insertion, merge, quick, selection
+
+
+@pytest.fixture(params=[bubble, insertion, merge, quick, selection])
+def method(request):
+    return request.param
 
 
 def test_sort_success(method):
@@ -24,10 +31,3 @@ def test_sort_one(method):
 
 def test_sort_empty(method):
     assert method([]) == []
-
-
-for method in (bubble, insertion, selection, merge, quick):
-    test_sort_success(method)
-    test_sort_reverse(method)
-    test_sort_empty(method)
-    test_sort_one(method)

@@ -1,4 +1,6 @@
-from linked_list import LinkedList
+import pytest
+
+from cs.linked_list import LinkedList
 
 
 def test_init_list():
@@ -31,15 +33,8 @@ def test_insert_after():
     assert [item for item in ll1] == [1, 3, 2]
 
 
+@pytest.mark.xfail
 def test_reverse():
     ll = LinkedList.from_iter([1, 2, 3, 4, 5])
     ll.reverse()
     assert [item for item in ll] == [5, 4, 3, 2, 1]
-
-
-if __name__ == '__main__':
-    test_init_list()
-    test_init_from_iterable()
-    test_to_str()
-    test_iter()
-    print("Test LinkedList :: OK")

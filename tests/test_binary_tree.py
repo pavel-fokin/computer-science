@@ -1,4 +1,4 @@
-from binary_tree import BinaryTree, Preorder, Inorder, Postorder
+from cs.binary_tree import BinaryTree, Preorder, Inorder, Postorder
 
 
 def test_init_binary_tree():
@@ -50,14 +50,3 @@ def test_postorder_traverse():
     traverse = Postorder(tree)
 
     assert [node.data for node in traverse] == [2, 3, 1]
-
-
-if __name__ == '__main__':
-    test_init_binary_tree()
-    test_node_add_left()
-    test_node_add_right()
-
-    test_preorder_traverse()
-    test_inorder_traverse()
-    test_postorder_traverse()
-    print("Test BinaryTree :: OK")
