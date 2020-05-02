@@ -83,3 +83,16 @@ def merge(array: list, reverse=False) -> list:
 
     cmp = operator.lt if reverse else operator.gt
     return sort_(array, reverse, cmp)
+
+
+def quick(array: list, reverse=False) -> list:
+    def sort_(array, cmp):
+        if array == []:
+            return []
+        pivot = array[0]
+        left = [x for x in array[1:] if cmp(array[0], x)]
+        right = [x for x in array[1:] if not cmp(array[0], x)]
+        return sort_(left, cmp) + [pivot] + sort_(right, cmp)
+
+    cmp = operator.le if reverse else operator.ge
+    return sort_(array, cmp)
