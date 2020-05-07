@@ -12,7 +12,7 @@ def lexicographic(array):
     if k == -1:
         return array[::-1]
 
-    l = 0
+    l = n
     for i in reversed(range(k, n)):
         if array[i] > array[k]:
             l = i
