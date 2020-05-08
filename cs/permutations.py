@@ -23,3 +23,20 @@ def lexicographic(array):
     array[k+1:] = array[k+1:][::-1]
 
     return array
+
+
+def _heaps_permutation(array, n):
+    if n == 1:
+        yield array
+    else:
+        for i in range(n-1):
+            yield from _heaps_permutation(array, n-1)
+            if i % 2 == 0:
+                array[i], array[n-1] = array[n-1], array[i]
+            else:
+                array[0], array[n-1] = array[n-1], array[0]
+        yield from _heaps_permutation(array, n-1)
+
+
+def heaps(array):
+    yield from _heaps_permutation(array, len(array))
