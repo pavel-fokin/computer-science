@@ -33,7 +33,6 @@ def test_insert_after():
     assert [item for item in ll1] == [1, 3, 2]
 
 
-@pytest.mark.xfail
 def test_reverse():
     ll = LinkedList.from_iter([1, 2, 3, 4, 5])
     ll.reverse()

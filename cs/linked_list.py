@@ -33,7 +33,7 @@ class LinkedList:
     def from_iter(cls, iterable):
         new_list = LinkedList()
 
-        for item in iterable:
+        for item in reversed(iterable):
             new_list.insert_beginning(item)
 
         return new_list
