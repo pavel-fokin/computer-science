@@ -18,12 +18,12 @@ def test_init_from_iterable():
 
 def test_to_str():
     ll1 = LinkedList.from_iter([1, 2, 3])
-    assert str(ll1) == '3 -> 2 -> 1'
+    assert str(ll1) == '1 -> 2 -> 3'
 
 
 def test_iter():
     ll1 = LinkedList.from_iter([1, 2, 3])
-    assert [item for item in ll1] == [3, 2, 1]
+    assert [item for item in ll1] == [1, 2, 3]
 
 
 def test_insert_after():
