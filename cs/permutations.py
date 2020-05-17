@@ -29,13 +29,13 @@ def _heaps_permutation(array, n):
     if n == 1:
         yield array
     else:
+        yield from _heaps_permutation(array, n-1)
         for i in range(n-1):
-            yield from _heaps_permutation(array, n-1)
             if i % 2 == 0:
                 array[i], array[n-1] = array[n-1], array[i]
             else:
                 array[0], array[n-1] = array[n-1], array[0]
-        yield from _heaps_permutation(array, n-1)
+            yield from _heaps_permutation(array, n-1)
 
 
 def heaps(array):
