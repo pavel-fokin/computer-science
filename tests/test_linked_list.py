@@ -1,5 +1,3 @@
-import pytest
-
 from cs.linked_list import LinkedList
 
 
@@ -23,17 +21,17 @@ def test_to_str():
 
 def test_iter():
     ll1 = LinkedList.from_iter([1, 2, 3])
-    assert [item for item in ll1] == [1, 2, 3]
+    assert [1, 2, 3] == list(ll1)
 
 
 def test_insert_after():
     ll1 = LinkedList(1)
     ll1.insert_after(ll1.head, 2)
     ll1.insert_after(ll1.head, 3)
-    assert [item for item in ll1] == [1, 3, 2]
+    assert [1, 3, 2] == list(ll1)
 
 
 def test_reverse():
-    ll = LinkedList.from_iter([1, 2, 3, 4, 5])
-    ll.reverse()
-    assert [item for item in ll] == [5, 4, 3, 2, 1]
+    ll1 = LinkedList.from_iter([1, 2, 3, 4, 5])
+    ll1.reverse()
+    assert [5, 4, 3, 2, 1] == list(ll1)
