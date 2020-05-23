@@ -14,5 +14,5 @@ tests:
 
 .PHONY: lint
 lint:
-	@flake8 app tests
-	@pylint --exit-zero --rcfile setup.cfg app tests
+	@flake8 cs tests
+	@pylint --exit-zero --rcfile setup.cfg cs tests
