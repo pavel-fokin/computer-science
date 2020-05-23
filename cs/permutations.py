@@ -7,8 +7,8 @@ def _lex_permuations(array):
         return array
 
     k = -1
-    for i in reversed(range(n-1)):
-        if array[i] < array[i+1]:
+    for i in reversed(range(n - 1)):
+        if array[i] < array[i + 1]:
             k = i
             break
 
@@ -23,7 +23,7 @@ def _lex_permuations(array):
 
     array[l], array[k] = array[k], array[l]
 
-    array[k+1:] = array[k+1:][::-1]
+    array[k + 1:] = array[k + 1:][::-1]
 
     return array
 
@@ -41,13 +41,13 @@ def _heaps_permutation(array, n):
     if n == 1:
         yield array
     else:
-        yield from _heaps_permutation(array[:], n-1)
-        for i in range(n-1):
+        yield from _heaps_permutation(array[:], n - 1)
+        for i in range(n - 1):
             if i % 2 == 0:
-                array[i], array[n-1] = array[n-1], array[i]
+                array[i], array[n - 1] = array[n - 1], array[i]
             else:
-                array[0], array[n-1] = array[n-1], array[0]
-            yield from _heaps_permutation(array[:], n-1)
+                array[0], array[n - 1] = array[n - 1], array[0]
+            yield from _heaps_permutation(array[:], n - 1)
 
 
 def heaps(array):
