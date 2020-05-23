@@ -1,9 +1,25 @@
-from cs.permutations import lexicographic
+from cs.permutations import heaps, lexicographic
 
 
 def test_next_lex():
-    assert lexicographic([1, 2]) == [2, 1]
-    assert lexicographic([1, 2, 3]) == [1, 3, 2]
-    assert lexicographic([3, 2, 1]) == [1, 2, 3]
-    assert lexicographic([1, 1, 5]) == [1, 5, 1]
-    assert lexicographic([1, 3, 2]) == [2, 1, 3]
+    expected = [
+        [1, 2, 3],
+        [1, 3, 2],
+        [2, 1, 3],
+        [2, 3, 1],
+        [3, 1, 2],
+        [3, 2, 1],
+    ]
+    assert expected == list(lexicographic([1, 2, 3]))
+
+
+def test_heaps_algorithm():
+    expected = [
+        [1, 2, 3],
+        [2, 1, 3],
+        [3, 2, 1],
+        [2, 3, 1],
+        [1, 2, 3],
+        [2, 1, 3],
+    ]
+    assert expected == list(heaps([1, 2, 3]))
