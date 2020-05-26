@@ -23,3 +23,15 @@ class Trie:
             else:
                 return None
         return node.value
+
+
+def all_words(trie):
+    def iterate(node):
+        for char, child in node.children.items():
+            if child.value:
+                yield f"{char}"
+            else:
+                for each in iterate(child):
+                    yield char + each
+
+    yield from iterate(trie.root)
