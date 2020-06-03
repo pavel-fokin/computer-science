@@ -1,22 +1,19 @@
 class Trie:
-    class Node:
-        def __init__(self):
-            self.children = {}
-            self.value = None
 
     def __init__(self):
-        self.root = Trie.Node()
+        self.children = {}
+        self.value = None
 
     def insert(self, key: str, value=True):
-        node = self.root
+        node = self
         for char in key:
             if char not in node.children:
-                node.children[char] = Trie.Node()
+                node.children[char] = Trie()
             node = node.children[char]
         node.value = value
 
     def find(self, key: str):
-        node = self.root
+        node = self
         for char in key:
             if char in node.children:
                 node = node.children[char]
@@ -24,14 +21,10 @@ class Trie:
                 return None
         return node.value
 
-
-def all_words(trie):
-    def iterate(node):
-        for char, child in node.children.items():
+    def all_words(self):
+        for char, child in self.children.items():
             if child.value:
                 yield f"{char}"
             else:
-                for each in iterate(child):
+                for each in child.all_words():
                     yield char + each
-
-    yield from iterate(trie.root)

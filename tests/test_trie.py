@@ -1,4 +1,4 @@
-from cs.trie import Trie, all_words
+from cs.trie import Trie
 
 
 def test_trie_use_case():
@@ -29,4 +29,4 @@ def test_trie_all_words():
     trie.insert("dog")
     trie.insert("hit")
 
-    assert sorted(list(all_words(trie))) == sorted(["hot", "dog", "hit"])
+    assert sorted(list(trie.all_words())) == sorted(["hot", "dog", "hit"])
