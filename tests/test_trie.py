@@ -1,3 +1,5 @@
+import pytest
+
 from cs.trie import Trie
 
 
@@ -30,3 +32,25 @@ def test_trie_all_words():
     trie.insert("hit")
 
     assert sorted(list(trie.all_words())) == sorted(["hot", "dog", "hit"])
+
+
+def test_find_pattern():
+    trie = Trie()
+    trie.insert("hot")
+    trie.insert("dog")
+    trie.insert("hit")
+
+    assert trie.find_pattern("h.t")
+    assert trie.find_pattern("..t")
+    assert not trie.find_pattern("..x")
+
+
+@pytest.mark.xfail
+def test_find_pattern_case2():
+    trie = Trie()
+    trie.insert("a")
+
+    assert trie.find("a")
+    assert trie.find(".")
+    assert not trie.find(".a")
+    assert not trie.find("a.")
